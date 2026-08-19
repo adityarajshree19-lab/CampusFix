@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusFix | BML Munjal University</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            <h2>CampusFix</h2>
+            <span>BML Munjal University</span>
+        </div>
+
+        <div class="nav-links">
+
+            <a href="#home">Home</a>
+
+            <a href="#features">Features</a>
+
+            <a href="#about">About</a>
+
+            <button class="nav-button" onclick="reportProblem()">
+                Report Issue
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <!-- HERO SECTION -->
+
+    <main id="home">
+
+        <section class="hero">
+
+            <div class="hero-text">
+
+                <div class="tag">
+                    🏫 Student-Powered Campus
+                </div>
+
+                <h1>
+                    Make Your Campus
+                    <span>Better.</span>
+                </h1>
+
+                <p>
+                    CampusFix helps BML Munjal University students
+                    report, track and prioritize problems around
+                    the campus.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <button
+                        class="main-button"
+                        onclick="reportProblem()">
+
+                        🚨 Report a Problem
+
+                    </button>
+
+                    <button
+                        class="secondary-button"
+                        onclick="showDashboard()">
+
+                        📊 View Dashboard
+
+                    </button>
+
+                </div>
+
+                <div class="trust-text">
+
+                    ✦ Built as a student project for BML Munjal University
+
+                </div>
+
+            </div>
+
+
+            <!-- CAMPUS HEALTH CARD -->
+
+            <div class="health-card">
+
+                <div class="card-top">
+
+                    <span>Campus Health</span>
+
+                    <span class="green-dot">
+                        ●
+                    </span>
+
+                </div>
+
+                <div class="health-score" id="homeHealthScore">
+                    100%
+                 </div>
+
+                <div class="health-status">
+                    ✓ Looking Good
+                </div>
+                <div class="progress" id="homeHealthProgress"></div>
+
+                    <div class="progress"></div>
+
+                </div>
+
+                <p>
+                    Based on recent campus reports
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- FEATURES -->
+
+        <!-- CAMPUS INTELLIGENCE -->
+
+<section class="intelligence">
+
+    <div class="intelligence-content">
+
+        <span class="intelligence-label">🧠 CAMPUS INTELLIGENCE</span>
+
+        <h2>
+            CampusFix isn't just a complaint portal.
+            <span>It is a campus issue intelligence system.</span>
+        </h2>
+
+        <p>
+            CampusFix turns individual student reports into meaningful insights,
+            helping identify recurring problems, understand campus priorities,
+            and create a better campus experience.
+        </p>
+
+        <div class="intelligence-pills">
+
+            <div class="info-pill">
+                📊 Identify Patterns
+            </div>
+
+            <div class="info-pill">
+                🎯 Prioritize Issues
+            </div>
+
+            <div class="info-pill">
+                ⚡ Improve Faster
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<section
+            class="features"
+            id="features">
+
+            <div class="section-heading">
+
+                <span>HOW IT WORKS</span>
+
+                <h2>
+                    One platform. Better campus.
+                </h2>
+
+            </div>
+
+
+            <div class="feature-container">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        📢
+                    </div>
+
+                    <h3>
+                        Report
+                    </h3>
+
+                    <p>
+                        Students can quickly report
+                        problems they find around campus.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        Track
+                    </h3>
+
+                    <p>
+                        Track reported issues and see
+                        whether they are resolved.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        ⚡
+                    </div>
+
+                    <h3>
+                        Prioritize
+                    </h3>
+
+                    <p>
+                        Problems affecting more students
+                        receive higher priority.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ABOUT -->
+
+        <section
+            class="about"
+            id="about">
+
+            <div>
+
+                <span class="small-title">
+                    OUR PURPOSE
+                </span>
+
+                <h2>
+                    Small reports can create
+                    a better campus.
+                </h2>
+
+            </div>
+
+            <p>
+                CampusFix is designed to make communication
+                between students and campus management
+                simpler, faster and more transparent.
+            </p>
+
+        </section>
+
+    </main>
+            </section>
+
+
+        <!-- =====================================================
+             CAMPUSFIX QR ACCESS
+        ===================================================== -->
+
+        <section class="qr-section">
+
+            <div class="qr-card">
+
+                <div class="qr-content">
+
+                    <span class="qr-label">
+                        📱 QUICK ACCESS
+                    </span>
+
+                    <h2>
+                        Access CampusFix from your phone.
+                    </h2>
+
+                    <p>
+                        Scan the QR code to open CampusFix
+                        and report a campus issue directly
+                        from your smartphone.
+                    </p>
+
+                </div>
+
+                <div class="qr-box">
+
+                    <div id="qrcode"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div>
+
+            <strong>
+                CampusFix
+            </strong>
+
+            <p>
+                Student Project • BML Munjal University
+            </p>
+
+        </div>
+
+        <div>
+
+            <p>
+                Built by B.Tech CSE Students
+            </p>
+
+        </div>
+
+    </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="script.js"></script>
+
+<!-- REPORT ISSUE MODAL -->
+
+<div id="reportModal" class="report-modal">
+
+    <div class="report-box">
+
+        <button class="close-report" onclick="closeReportModal()">
+            ✕
+        </button>
+
+        <div class="report-header">
+
+            <span class="report-icon">🚨</span>
+
+            <div>
+                <h2>Report a Campus Issue</h2>
+                <p>Help us make BML Munjal University better.</p>
+            </div>
+
+        </div>
+
+
+        <!-- BUILDING -->
+
+        <div class="form-group">
+
+            <label>📍 Building / Location</label>
+
+            <select id="buildingSelect" onchange="updateFloors()">
+
+                <option value="">Select Building</option>
+
+                <option value="E2">E2 Building</option>
+
+                <option value="GLA">GLA Building</option>
+
+                <option value="Ratan Tata Hostel">
+                    Ratan Tata Hostel
+                </option>
+
+                <option value="Bhagat Singh Hostel">
+                    Bhagat Singh Hostel
+                </option>
+
+                <option value="Gargi Hostel">
+                    Gargi Hostel
+                </option>
+
+                <option value="Kalpna Chawla Hostel">
+                    Kalpna Chawla Hostel
+                </option>
+
+                <option value="Library">
+                    📚 Library
+                </option>
+
+                <option value="Gym">
+                    🏋️ Gym
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- FLOOR -->
+
+        <div class="form-row">
+
+            <div class="form-group">
+
+                <label>🏢 Floor</label>
+
+                <select id="floorSelect" onchange="updateRooms()" disabled>
+
+                    <option value="">
+                        Select Building First
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- ROOM -->
+
+            <div class="form-group">
+
+                <label>🚪 Room / Area</label>
+
+                <select id="roomSelect" disabled>
+
+                    <option value="">
+                        Select Floor First
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- ISSUE TYPE -->
+
+        <div class="form-group">
+
+            <label>🎯 Issue Type</label>
+
+            <select id="issueSelect">
+
+                <option value="">
+                    Select Issue Type
+                </option>
+
+                <option value="Wi-Fi">
+                    📶 Wi-Fi
+                </option>
+
+                <option value="Drinking Water">
+                    💧 Drinking Water
+                </option>
+
+                <option value="Washroom">
+                    🚻 Washroom
+                </option>
+
+                <option value="Electricity">
+                    💡 Electricity / Lights
+                </option>
+
+                <option value="AC">
+                    ❄️ AC
+                </option>
+
+                <option value="Projector">
+                    📽️ Projector
+                </option>
+
+                <option value="Furniture">
+                    🪑 Furniture
+                </option>
+
+                <option value="Cleanliness">
+                    🧹 Cleanliness
+                </option>
+
+                <option value="Maintenance">
+                    🔧 Maintenance
+                </option>
+
+                <option value="Gym Equipment">
+                    🏋️ Gym Equipment
+                </option>
+
+                <option value="Library Facility">
+                    📚 Library Facility
+                </option>
+
+                <option value="Other">
+                    🔧 Other
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+
+
+        <!-- DESCRIPTION -->
+
+        <div class="form-group">
+
+            <label>📝 Description</label>
+
+            <textarea
+                id="description"
+                placeholder="Describe the issue briefly..."
+                rows="4">
+            </textarea>
+
+        </div>
+
+
+        <!-- SUBMIT -->
+
+        <button
+            class="submit-report"
+            onclick="submitReport()">
+
+            🚨 Submit Report
+
+        </button>
+
+
+        <p class="privacy-note">
+            🔒 Your report will be securely recorded by CampusFix.
+        </p>
+
+    </div>
+
+</div>
+<!-- CAMPUSFIX DASHBOARD -->
+
+<section id="dashboardSection" class="dashboard-section">
+
+    <div class="dashboard-heading">
+
+        <span>📊 CAMPUSFIX INTELLIGENCE</span>
+
+        <h2>Campus Issue Dashboard</h2>
+
+        <p>
+            Real-time insights from student reports.
+        </p>
+
+    </div>
+
+
+    <!-- CAMPUS HEALTH -->
+
+    <div class="campus-health-card">
+
+        <div>
+
+            <span class="dashboard-label">
+                🏥 CAMPUS HEALTH
+            </span>
+
+            <h3 id="campusHealthScore">
+                87
+            </h3>
+
+            <p>
+                Overall Campus Condition
+            </p>
+
+        </div>
+
+        <div class="health-status">
+            🟢 Good
+        </div>
+
+    </div>
+
+
+    <!-- STAT CARDS -->
+
+    <div class="dashboard-stats">
+
+        <div class="stat-card">
+
+            <span>📋</span>
+
+            <h3 id="totalReports">
+                42
+            </h3>
+
+            <p>Total Reports</p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>✅</span>
+
+            <h3 id="resolvedReports">
+                31
+            </h3>
+
+            <p>Resolved</p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>🔴</span>
+
+            <h3 id="highPriorityReports">
+                3
+            </h3>
+
+            <p>High Priority</p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>⚠️</span>
+
+            <h3 id="activeReports">
+                8
+            </h3>
+
+            <p>Active Issues</p>
+
+        </div>
+
+    </div>
+
+
+    <!-- HIGH PRIORITY -->
+
+    <div class="dashboard-grid">
+
+
+        <div class="dashboard-card">
+
+            <div class="card-title">
+
+                <h3>🔴 High Priority Issues</h3>
+
+                <span>Auto-detected</span>
+
+            </div>
+
+
+            <div class="issue-item">
+
+                <div>
+
+                    <strong>📶 Wi-Fi Issue</strong>
+
+                    <p>
+                        E2 Building • Second Floor • NB203
+                    </p>
+
+                </div>
+
+                <span class="issue-count">
+                    8 reports
+                </span>
+
+            </div>
+
+
+            <div class="issue-item">
+
+                <div>
+
+                    <strong>🚻 Washroom Issue</strong>
+
+                    <p>
+                        Ratan Tata Hostel
+                    </p>
+
+                </div>
+
+                <span class="issue-count">
+                    6 reports
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- RECURRING ISSUES -->
+
+        <div class="dashboard-card">
+
+            <div class="card-title">
+
+                <h3>🧠 Recurring Issues</h3>
+
+                <span>Patterns</span>
+
+            </div>
+
+
+            <div class="pattern-item">
+
+                📶 Wi-Fi
+
+                <strong>
+                    18 reports
+                </strong>
+
+            </div>
+
+
+            <div class="pattern-item">
+
+                🧹 Cleanliness
+
+                <strong>
+                    11 reports
+                </strong>
+
+            </div>
+
+
+            <div class="pattern-item">
+
+                💧 Drinking Water
+
+                <strong>
+                    7 reports
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MOST REPORTED ZONE -->
+
+    <div class="zone-card">
+
+        <span>
+            🏆 MOST REPORTED CAMPUS ZONE
+        </span>
+
+        <h3>
+            E2 Building
+        </h3>
+
+        <p>
+            17 issue reports recorded
+        </p>
+
+    </div>
+
+</section>
+</body>
+</html>
