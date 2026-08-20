@@ -105,7 +105,7 @@ async function submitReport() {
     try {
 
         const response = await fetch(
-            "http://localhost:3000/api/reports",
+            "https://campusfix-xzjb.onrender.com/api/reports",
             {
                 method: "POST",
 
@@ -477,7 +477,7 @@ async function loadAdminDashboard() {
 
         const response =
             await fetch(
-                "http://localhost:3000/api/reports"
+                "https://campusfix-xzjb.onrender.com/api/reports"
             );
 
 
@@ -972,7 +972,7 @@ async function startResolve(reportId) {
 
         const resolveResponse =
             await fetch(
-                `http://localhost:3000/api/reports/${reportId}/resolve`,
+                `https://campusfix-xzjb.onrender.com/api/reports/${reportId}/resolve`,
                 {
                     method: "POST",
 
@@ -1049,7 +1049,7 @@ async function startResolve(reportId) {
 
         const verifyResponse =
             await fetch(
-                `http://localhost:3000/api/reports/${reportId}/verify-otp`,
+                `https://campusfix-xzjb.onrender.com/api/reports/${reportId}/verify-otp`,
                 {
                     method: "POST",
 
