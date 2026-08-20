@@ -1142,7 +1142,7 @@ async function testBackend() {
 
         const response =
             await fetch(
-                "http://localhost:3000/"
+                "https://campusfix-xzjb.onrender.com/"
             );
 
 
