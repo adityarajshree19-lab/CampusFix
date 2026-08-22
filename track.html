@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Complaint | CampusFix</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .track-container { max-width: 600px; margin: 50px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .track-input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #d1d5db; border-radius: 6px; }
+        .track-btn { width: 100%; padding: 12px; background: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        .track-result { margin-top: 20px; display: none; }
+        .status-badge { display: inline-block; padding: 5px 10px; border-radius: 20px; font-weight: bold; }
+        .status-pending { background: #fef08a; color: #854d0e; }
+        .status-seen { background: #bfdbfe; color: #1e3a8a; }
+        .status-progress { background: #fed7aa; color: #9a3412; }
+        .status-resolved { background: #bbf7d0; color: #166534; }
+        .timeline { margin-top: 20px; padding-left: 15px; border-left: 2px solid #e5e7eb; }
+        .timeline-item { margin-bottom: 15px; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: -21px; top: 0; width: 10px; height: 10px; border-radius: 50%; background: #2563eb; border: 2px solid white; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">
+        <h2>CampusFix</h2>
+        <span>BML Munjal University</span>
+    </div>
+    <div class="nav-links">
+        <a href="/">Home</a>
+    </div>
+</nav>
+
+<main>
+    <div class="track-container">
+        <h2>📍 Track Your Complaint</h2>
+        <p>Enter your Complaint ID to see the latest updates.</p>
+        
+        <input type="text" id="trackId" class="track-input" placeholder="e.g. 1787392061630">
+        <button class="track-btn" onclick="trackComplaint()">Track Status</button>
+        
+        <div id="loadingState" style="display:none; text-align:center; margin-top:20px;">
+            ⏳ Searching...
+        </div>
+        
+        <div id="errorState" style="display:none; text-align:center; margin-top:20px; color:red;">
+            ❌ No complaint found with this ID.
+        </div>
+        
+        <div id="trackResult" class="track-result">
+            <h3 style="margin-bottom: 10px;">Status Overview</h3>
+            <div style="padding: 15px; border: 1px solid #e5e7eb; border-radius: 8px;">
+                <strong>Current Status:</strong> <span id="currentStatusBadge" class="status-badge"></span>
+            </div>
+            
+            <div id="assignedStaffBox" style="margin-top: 15px; padding: 15px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; display: none;">
+                <strong>👷 Assigned Staff:</strong> <span id="staffNameRole"></span><br>
+                📞 <span id="staffPhone"></span> <br>
+                ⏳ ETA: <span id="staffEta"></span>
+            </div>
+            
+            <div class="timeline" id="statusTimeline"></div>
+        </div>
+    </div>
+</main>
+
+<script>
+const API = "http://localhost:5000";
+
+function getStatusClass(status) {
+    if (status === 'Pending') return 'status-pending';
+    if (status === 'Seen by Admin') return 'status-seen';
+    if (status === 'In Progress') return 'status-progress';
+    if (status === 'Resolved') return 'status-resolved';
+    return '';
+}
+
+async function trackComplaint(complaintId) {
+    const id = complaintId || document.getElementById('trackId').value.trim();
+    if (!id) return;
+    
+    document.getElementById('loadingState').style.display = 'block';
+    document.getElementById('errorState').style.display = 'none';
+    document.getElementById('trackResult').style.display = 'none';
+    
+    try {
+        const response = await fetch(`${API}/api/complaints/${id}/track`);
+        const data = await response.json();
+        
+        document.getElementById('loadingState').style.display = 'none';
+        
+        if (!response.ok || !data.success) {
+            document.getElementById('errorState').style.display = 'block';
+            return;
+        }
+        
+        // Update UI
+        const badge = document.getElementById('currentStatusBadge');
+        badge.textContent = data.status;
+        badge.className = 'status-badge ' + getStatusClass(data.status);
+        
+        const staffBox = document.getElementById('assignedStaffBox');
+        if (data.assignedStaff) {
+            document.getElementById('staffNameRole').textContent = `${data.assignedStaff.name || 'N/A'} (${data.assignedStaff.role || ''})`;
+            document.getElementById('staffPhone').textContent = data.assignedStaff.phone || 'N/A';
+            document.getElementById('staffEta').textContent = data.assignedStaff.eta || 'N/A';
+            staffBox.style.display = 'block';
+        } else {
+            staffBox.style.display = 'none';
+        }
+        
+        const timeline = document.getElementById('statusTimeline');
+        if (data.statusHistory && data.statusHistory.length > 0) {
+            timeline.innerHTML = '<h3 style="margin-bottom:10px;">🕒 Status History</h3>' + data.statusHistory.map(h => `
+                <div class="timeline-item">
+                    <strong>${h.status}</strong> 
+                    <span style="font-size: 12px; color: #6b7280;">(${new Date(h.updatedAt).toLocaleString()})</span>
+                    ${h.note ? `<p style="margin: 5px 0 0; font-size: 14px; color: #374151;">${h.note}</p>` : ''}
+                </div>
+            `).join('');
+        } else {
+            timeline.innerHTML = '<p style="color:#6b7280;">No status updates yet.</p>';
+        }
+        
+        document.getElementById('trackResult').style.display = 'block';
+    } catch (err) {
+        document.getElementById('loadingState').style.display = 'none';
+        document.getElementById('errorState').style.display = 'block';
+    }
+}
+
+// Auto-load if ID in URL
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.has('id')) {
+    document.getElementById('trackId').value = urlParams.get('id');
+    trackComplaint(urlParams.get('id'));
+}
+</script>
+</body>
+</html>

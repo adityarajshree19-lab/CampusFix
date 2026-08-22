@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusFix Dashboard</title>
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+<nav>
+
+    <div class="logo">
+        <h2>CampusFix</h2>
+        <span>BML Munjal University</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <span id="navUserLabel" class="nav-user"></span>
+        <button class="nav-button" onclick="logoutUser()">
+            Log out
+        </button>
+    </div>
+
+</nav>
+
+
+<main>
+
+<section id="dashboardSection" class="dashboard-section dashboard-section-visible">
+
+    <div class="dashboard-heading">
+
+        <span>📊 CAMPUSFIX INTELLIGENCE</span>
+
+        <h2>Campus Issue Dashboard</h2>
+
+        <p>
+            Real-time insights from student reports.
+        </p>
+
+    </div>
+
+
+    <div class="campus-health-card">
+
+        <div>
+            <span class="dashboard-label">
+                🏥 CAMPUS HEALTH
+            </span>
+
+            <h3 id="campusHealthScore">100</h3>
+
+            <p>Overall Campus Condition</p>
+        </div>
+
+        <div class="health-status" id="dashboardHealthStatus">
+            🟢 Good
+        </div>
+
+    </div>
+
+
+    <div class="dashboard-stats">
+
+        <div class="stat-card">
+            <span>📋</span>
+            <h3 id="totalReports">0</h3>
+            <p>Total Reports</p>
+        </div>
+
+        <div class="stat-card">
+            <span>⚠️</span>
+            <h3 id="activeReports">0</h3>
+            <p>Active Issues</p>
+        </div>
+
+        <div class="stat-card">
+            <span>✅</span>
+            <h3 id="resolvedReports">0</h3>
+            <p>Resolved</p>
+        </div>
+
+        <div class="stat-card">
+            <span>🔴</span>
+            <h3 id="highPriorityReports">0</h3>
+            <p>High Priority</p>
+        </div>
+
+    </div>
+
+
+    <div class="dashboard-grid">
+
+        <div class="dashboard-card">
+
+            <div class="card-title">
+                <h3>🔴 Active Issues</h3>
+                <span>Live</span>
+            </div>
+
+            <div id="activeIssueList"></div>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="card-title">
+                <h3>🧠 Recurring Issues</h3>
+                <span>Patterns</span>
+            </div>
+
+            <div id="recurringIssueList"></div>
+
+        </div>
+
+    </div>
+
+
+    <div class="zone-card">
+
+        <span>MOST REPORTED CAMPUS ZONE</span>
+
+        <h3 id="mostReportedZone">
+            No reports yet
+        </h3>
+
+        <p id="mostReportedZoneCount">
+            0 issue reports recorded
+        </p>
+
+    </div>
+
+
+    <div class="cases-section">
+
+        <div class="cases-heading">
+
+            <div>
+                <span>CASE MANAGEMENT</span>
+                <h2>All Reported Cases</h2>
+            </div>
+
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <input type="text" id="adminSearchInput" placeholder="Search by Room or Contact..." style="padding: 8px; border: 1px solid #d1d5db; border-radius: 6px;" onkeyup="loadAdminDashboard()">
+                
+                <select id="adminStatusFilter" style="padding: 8px; border: 1px solid #d1d5db; border-radius: 6px;" onchange="loadAdminDashboard()">
+                    <option value="All">All Statuses</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Accepted">Accepted</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Resolved">Resolved</option>
+                </select>
+
+                <button class="refresh-button" onclick="loadAdminDashboard()">
+                    ↻ Refresh
+                </button>
+            </div>
+
+        </div>
+
+        <div id="allCasesList" class="all-cases-list"></div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<div id="caseModal" class="case-modal">
+
+    <div class="case-box">
+
+        <button class="close-report" onclick="closeCaseModal()">
+            ✕
+        </button>
+
+        <div id="caseDetails"></div>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    <div>
+        <strong>CampusFix</strong>
+
+        <p>
+            Student Innovation Project • BML Munjal University
+        </p>
+    </div>
+
+    <div>
+        <p>
+            Built by B.Tech CSE Students
+        </p>
+    </div>
+
+</footer>
+
+
+<script>
+    window.CAMPUSFIX_PAGE = "dashboard";
+</script>
+<script src="/script.js?v=2"></script>
+
+</body>
+</html>
