@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusFix Login</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+
+    <div class="logo">
+        <h2>CampusFix</h2>
+        <span>BML Munjal University</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+    </div>
+
+</nav>
+
+
+<main class="auth-page">
+
+    <section class="auth-card">
+
+        <span class="intelligence-label">ACCOUNT</span>
+
+        <h1>Welcome to CampusFix</h1>
+
+        <p>
+            Students can create an account to report and track issues.
+            Admins log in with the account created on the server.
+        </p>
+
+        <form class="auth-form" onsubmit="return handleLogin(event)">
+
+            <h2>Log in</h2>
+
+            <label>
+                Email
+                <input id="loginEmail" type="email" required>
+            </label>
+
+            <label>
+                Password
+                <input id="loginPassword" type="password" required>
+            </label>
+
+            <button class="main-button" type="submit">
+                Log in
+            </button>
+
+        </form>
+
+        <form class="auth-form" onsubmit="return handleSignup(event)">
+
+            <h2>Student sign up</h2>
+
+            <label>
+                Email
+                <input id="signupEmail" type="email" required>
+            </label>
+
+            <label>
+                Password
+                <input id="signupPassword" type="password" minlength="6" required>
+            </label>
+
+            <button class="secondary-button" type="submit">
+                Create student account
+            </button>
+
+        </form>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div>
+        <strong>CampusFix</strong>
+
+        <p>
+            Student Innovation Project • BML Munjal University
+        </p>
+    </div>
+
+    <div>
+        <p>
+            Built by B.Tech CSE Students
+        </p>
+    </div>
+
+</footer>
+
+
+<script src="script.js?v=2"></script>
+
+</body>
+</html>

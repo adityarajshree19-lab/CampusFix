@@ -1,0 +1,7 @@
+node_modules/
+.env
+backend/campusfix.db
+backend/campusfix.db-wal
+backend/campusfix.db-shm
+backend/.jwt-secret
+backend/uploads/
